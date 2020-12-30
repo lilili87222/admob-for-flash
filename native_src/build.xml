@@ -1,0 +1,89 @@
+<project name="ANE" basedir="." default="start">
+
+
+	<property file="build.properties"/>
+
+	<target name="cleanBinaries">
+		<delete dir="${BINARIES_FOLDER}"/>
+		<mkdir dir="${BINARIES_FOLDER}"/>
+		<mkdir dir="${BINARIES_FOLDER}/android"/>
+		
+		<mkdir dir="${BINARIES_FOLDER}/ios"/>
+		<mkdir dir="${BINARIES_FOLDER}/default"/>
+	</target>	
+
+
+	<target name="packjar" depends="cleanBinaries">
+
+		<copydir src="./android_files/libs" dest="${BINARIES_FOLDER}/android/"/>
+		<copydir src="./android_files/rs" forceoverwrite="true" dest="${BINARIES_FOLDER}/android"/>
+		<copy file="./android_files/bin/classes.jar" tofile="${BINARIES_FOLDER}/android/admob6.12.2.jar"/>
+		<delete file="${BINARIES_FOLDER}/android/FlashRuntimeExtensions.jar"/>
+		<copydir src="${IOS_FOLDER}" forceoverwrite="true" dest="${BINARIES_FOLDER}/ios"/>
+	</target>
+
+
+	<target name="unzipSwf" depends="packjar">
+	    <mkdir dir="temp"/>
+		<unzip src="${SWC_PATH}" dest="temp"/>
+		<copy file="temp/library.swf" todir="${BINARIES_FOLDER}/android"/>
+		<copy file="temp/library.swf" todir="${BINARIES_FOLDER}/default"/>
+		<copy file="temp/library.swf" todir="${BINARIES_FOLDER}/ios"/>
+		<delete dir="temp"/>
+	</target>
+
+
+	<target name="compile" depends="unzipSwf">
+		<java jar="${ADT.JAR}" fork="true" failonerror="true">
+			<arg value="-package"/>
+			<arg value="-target"/>
+			<arg value="ane"/>
+			<arg value="${ANE_PATH}"/>
+			<arg value="${EXTENSION.XML}"/>
+			
+			<arg value="-swc"/>
+			<arg value="${SWC_PATH}"/>
+			
+			<arg value="-platform"/> 
+			<arg value="Android-ARM"/>
+			<arg value="-platformoptions"/>
+			<arg value="${AND_PLATFORM_OPTIONS}"/>
+			<arg value="-C"/>
+			<arg value="${BINARIES_FOLDER}/android"/>
+			<arg value="."/>
+			
+			<arg value="-platform"/> 
+			<arg value="Android-x86"/>
+			<arg value="-platformoptions"/>
+			<arg value="${AND_PLATFORM_OPTIONS}"/>
+			<arg value="-C"/>
+			<arg value="${BINARIES_FOLDER}/android"/>
+			<arg value="."/>
+			
+			<arg value="-platform"/> 
+			<arg value="Android-ARM64"/>
+			<arg value="-platformoptions"/>
+			<arg value="${AND_PLATFORM_OPTIONS}"/>
+			<arg value="-C"/>
+			<arg value="${BINARIES_FOLDER}/android"/>
+			<arg value="."/>
+		
+			<arg value="-platform"/>
+			<arg value="iPhone-ARM"/>
+			<arg value="-platformoptions"/>
+			<arg value="${IOS_PLATFORM_OPTIONS}"/>
+			<arg value="-C"/>
+			<arg value="${BINARIES_FOLDER}/ios"/>
+			<arg value="."/>	
+		
+			<arg value="-platform"/>
+			<arg value="default"/>
+			<arg value="-C"/>
+			<arg value="${BINARIES_FOLDER}/default"/>
+			<arg value="library.swf"/>
+		</java>
+	</target>
+	<target name="start" depends="compile">
+		<move file="${ANE_PATH}" todir="${DEMO_FOLDER}/"/>
+	</target>
+</project>

@@ -1,0 +1,37 @@
+<extension xmlns="http://ns.adobe.com/air/extension/32.0">
+    <id>so.cuo.platform.admob</id>
+    <versionNumber>6.12.2</versionNumber>
+    <platforms>
+        <platform name="Android-ARM">
+            <applicationDeployment>
+                <nativeLibrary>admob6.12.2.jar</nativeLibrary>
+                <initializer>so.cuo.platform.admob.AdmobExtension</initializer>
+                <finalizer>so.cuo.platform.admob.AdmobExtension</finalizer>
+            </applicationDeployment>
+        </platform>
+        <platform name="Android-x86">
+            <applicationDeployment>
+                <nativeLibrary>admob6.12.2.jar</nativeLibrary>
+                <initializer>so.cuo.platform.admob.AdmobExtension</initializer>
+                <finalizer>so.cuo.platform.admob.AdmobExtension</finalizer>
+            </applicationDeployment>
+        </platform>
+        <platform name="Android-ARM64">
+            <applicationDeployment>
+                <nativeLibrary>admob6.12.2.jar</nativeLibrary>
+                <initializer>so.cuo.platform.admob.AdmobExtension</initializer>
+                <finalizer>so.cuo.platform.admob.AdmobExtension</finalizer>
+            </applicationDeployment>
+        </platform>
+		<platform name="iPhone-ARM">
+            <applicationDeployment>
+                <nativeLibrary>admob6.12.2.a</nativeLibrary>
+                <initializer>admobExtInitializer</initializer>
+                <finalizer>admobExtFinalizer</finalizer>
+            </applicationDeployment>
+        </platform>
+        <platform name="default">
+            <applicationDeployment/>
+        </platform>
+    </platforms>
+</extension>

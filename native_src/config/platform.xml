@@ -1,0 +1,19 @@
+<platform xmlns="http://ns.adobe.com/air/extension/32.0">
+	<copyright>ane 2020</copyright>
+	<sdkVersion>12.0</sdkVersion>
+	<linkerOptions>
+		<option>-ios_version_min 12.0</option>
+		<option>-lc++</option>-->
+	<!--	<option>-lclang_rt.ios</option>-->
+		<option>-ObjC</option>
+	</linkerOptions>
+	<packagedDependencies>
+        <packagedDependency>GoogleAppMeasurement.framework</packagedDependency>
+        <packagedDependency>GoogleMobileAds.framework</packagedDependency>
+        <packagedDependency>GoogleUtilities.framework</packagedDependency>
+        <packagedDependency>nanopb.framework</packagedDependency>
+        <packagedDependency>PromisesObjC.framework</packagedDependency>
+        <packagedDependency>UserMessagingPlatform.framework</packagedDependency>
+      	   <packagedDependency>libclang_rt.ios.a</packagedDependency> 
+    </packagedDependencies>
+</platform>
