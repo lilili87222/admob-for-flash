@@ -146,7 +146,7 @@ if(admob.isVideoReady()){
 MinimumOSVersion is required for ios ,admob reqired ios 8 and later;GADApplicationIdentifier is required by admob 7.1 and later
 ```
 	<key>MinimumOSVersion</key>
-        <string>9.0</string>
+        <string>12.0</string>
 ```
 simple example
 ```
