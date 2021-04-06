@@ -160,7 +160,7 @@ simple example
 				<string>2</string>
 			</array>
 				<key>MinimumOSVersion</key>
-        <string>9.0</string>
+        <string>12.0</string>
 			<key>NSAppTransportSecurity</key>
 <dict>
     <key>NSAllowsArbitraryLoads</key>
