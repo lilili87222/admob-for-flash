@@ -22,7 +22,7 @@ Admob ANE for Flash Air
 7. [License](#license)
 
 ## Deprecated 
-This project not maintain any more,you can check out and edit or change to other project.
+This project is not maintain any more,you can check it out and edit or change to other project.
 
 ## Admob ANE Description
 Admob Air Native Extention(Admob ANE) provides a way to integrate admob ads in Air ios and Air Android Game and app.
